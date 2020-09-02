@@ -47,3 +47,7 @@
 #ifndef MICROPY_PY_UBINASCII
 #define MICROPY_PY_UBINASCII               (1)
 #endif
+
+#ifndef MICROPY_ENABLE_SOURCE_LINE
+#define MICROPY_ENABLE_SOURCE_LINE         (1)
+#endif

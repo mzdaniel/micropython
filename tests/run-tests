@@ -405,7 +405,9 @@ def run_tests(pyb, tests, args, result_dir):
         elif args.target == 'nrf':
             skip_tests.add('basics/memoryview1.py')         # no item assignment for memoryview
             skip_tests.add('extmod/urandom_basic.py')       # unimplemented: urandom.seed
-            skip_tests.add('micropython/opt_level.py')      # no support for line numbers
+            if b'line' not in run_feature_check(pyb, args, base_path, 'lineno.py'):
+                skip_tests.add('micropython/opt_level.py')  # no support for line numbers
+                skip_tests.add('micropython/opt_level_lineno.py')
             skip_tests.add('misc/non_compliant.py')         # no item assignment for bytearray
             for t in tests:
                 if t.startswith('basics/io_'):
