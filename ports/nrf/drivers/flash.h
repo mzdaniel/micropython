@@ -29,15 +29,8 @@
 
 #include "nrfx_nvmc.h"
 
-#if defined(NRF51)
-#define FLASH_PAGESIZE (1024)
-
-#elif defined(NRF52_SERIES)
-#define FLASH_PAGESIZE (4096)
-
-#elif defined(NRF91_SERIES)
-#define FLASH_PAGESIZE (4096)
-
+#if defined(NRF51) || defined(NRF52_SERIES) || defined(NRF91_SERIES)
+#define FLASH_PAGESIZE (512)
 #else
 #error Unknown chip
 #endif
